@@ -1,26 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <HeaderComp titulo="Entrega Vue Cli"/>
+    <RegisterComp />
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import RegisterComp from './components/RegisterComp.vue'
+import HeaderComp from './components/HeaderComp.vue'
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+    components: {
+    HeaderComp,
+    RegisterComp,
+  },
+  data(){
+    return{
+      users:[{ name:"Ramon", email:"ramon@coder.com", password:"1234Abbb"}]
+    }
+  },
+  methods:{
+    showTable(){
+
+    }
   }
-}
+}  
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
