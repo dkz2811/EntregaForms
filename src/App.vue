@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderComp titulo="Entrega Vue Cli"/>
+    <HeaderComp titulo="Entrega Vue Cli Forms"/>
     <RegisterComp />
     </div>
 </template>

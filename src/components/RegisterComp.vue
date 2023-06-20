@@ -83,18 +83,20 @@
                 <div v-if="alreadyRegistered"><span>This email is already registered</span></div>
                 <div v-if="successRegister"><span>Success!</span></div>
                 <button class="btn btn-success mt-3" type="submit" >Send</button>
-            </div>
-        </vue-form>
-        <button class="btn btn-info mt-3" @click="showInfo">Show Info</button>
-        <TabComp  v-if="visible"
-        :users="registeredUsers"
-        label="Nacionality"
-        id="dynamic"
-        :options="options"
-        v-model="userNationality"
-        @updateList="updateList"
-        />
-    </div>
+                <button class="btn btn-danger mt-3"  type="button" v-on:click="clearForm()">Clear </button>
+        </div>
+    </vue-form>
+    <button class="btn btn-info mt-3" @click="showInfo">Show Info</button>
+    
+    <TabComp  v-if="visible"
+    :users="registeredUsers"
+    label="Nacionality"
+    id="dynamic"
+    :options="options"
+    v-model="userNationality"
+    @updateList="updateList"
+    />
+</div>
 </template>
 <script>
 import TabComp from './TabComp.vue'
@@ -147,7 +149,16 @@ export default {
         onSubmit() {
             if (this.formstate.$valid) {
                 this.registerUser(this.user);
+                this.clearForm();
             }
+        },
+        clearForm(){
+            this.user.name = ""
+            this.user.email = ""
+            this.user.password1 = ""
+            this.password2 = ""
+            this.successRegister = false;
+            this.formstate._reset();
         },
         checkPassword(value) {
             return /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value);

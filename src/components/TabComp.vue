@@ -1,16 +1,16 @@
 <template>
-    <div >
+    <div class="table-container">
       <table class="table">
         <thead>
-          <th>name</th><th>email</th><th>nationality</th>
+          <th>User Name</th><th>Email</th><th>ISO 3</th><th>Select your country</th>
         </thead>
         <tr class="table-row"  v-for="(user,i) in users" :key="user.email">
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.nationality }}</td>
           <td>
-            <label :for="user.email">{{ label }}</label>
-            <select :id="user.email" @input="inputHandler($event, i)">
+            <select class="form-select"
+            :id="user.email" @input="inputHandler($event, i)">
               <option v-for="option in options" 
                       :key="option.value" 
                       :value="option.value">
@@ -69,9 +69,6 @@ export default {
           this.userList.splice(pos,1)
           this.$emit('updateList', this.userList)
       },
-      editUser(user){
-        console.log(user)
-      },
       inputHandler(event,pos){
         let user = {}
         user.name = this.users[pos].name
@@ -86,5 +83,13 @@ export default {
 }
 </script>
 <style>
+.table-container {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-top: 1.3rem;
+    border-radius: 0.45rem;
+}
     
 </style>
